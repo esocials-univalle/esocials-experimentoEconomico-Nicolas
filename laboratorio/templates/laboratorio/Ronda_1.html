@@ -1,0 +1,106 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<style>
+    /* .textos {
+        max-width: 750px;
+        height: auto;
+        display: block;
+        margin: auto;
+    }*/
+
+    .texto {
+        white-space: pre-line;
+        border-color: black;
+        border-width: 5px;
+        border-style: solid;
+    }
+
+    .formulario {
+        margin: 0 auto;
+        text-align: center;
+        /*width: 400px;*/
+    }
+
+    .form-control {
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    .contenedor_textos {
+        overflow: hidden;
+    }
+
+    .contenido {
+        font-size: 15px;
+        line-height: 20px;
+        padding: 0 20px;
+        text-align: justify;
+    }
+
+    .contenedor_izquierdo {
+        float: left;
+        width: 50%;
+    }
+
+    .contenedor_izquierdo .contenido {
+        border-right: 5px solid #4BB495;
+    }
+
+    .contenedor_derecho {
+        float: right;
+        width: 50%;
+    }
+</style>
+{% endblock %}
+
+
+{% block title %}
+{{titulo}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="contenedor_textos">
+    <div class="contenedor_izquierdo">
+        <div class="contenido">
+
+        </div>
+    </div>
+
+    <div class="contenedor_derecho">
+        <div class="contenido">
+
+        </div>
+    </div>
+</div>
+
+<p>Por favor, lea con detenimiento los siguientes textos e indique el número exacto de errores que detecte entre el texto
+    original y el secundario.</p>
+
+
+<p class="textos" style="white-space: pre-line;white-space: pre-line;
+border-color: black;
+border-width: 2px;
+border-style: solid;
+padding: 10px;">
+    {{texto_original}}</p>
+<p class="textos" style="white-space: pre-line;border-color: black;
+border-width: 2px;
+border-style: solid;
+padding: 10px;">
+    {{texto_alternativo}}</p>
+
+
+<br>
+
+
+<div class="formulario">{% formfields %}</div>
+
+{% next_button %}
+
+{% endblock %}

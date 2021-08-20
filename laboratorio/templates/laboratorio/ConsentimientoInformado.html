@@ -1,0 +1,87 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<style>
+    .logo {
+        position: absolute;
+        top: 14.5%;
+        left: 50%;
+        /*El translatevalor de transformse basa en el tamaño del elemento, por lo que se centrará bien.*/
+        transform: translate(-50%, -50%);
+        /*redimensionando imagen respetando proporciones*/
+        max-width: 100px;
+        height: auto;
+    }
+
+    .otree-title {
+        margin-top: 185px;
+    }
+</style>
+{% endblock %}
+
+
+{% block title %}
+Consentimiento Informado
+{% endblock %}
+
+
+{% block content %}
+
+<img class="logo" src="{% static 'imagenes/logo_univalle.png' %}">
+
+<p>Señor(a),</p>
+
+<p>La siguiente actividad hace parte de un proyecto con fines académicos, realizado por la Universidad
+    del Valle en el marco de la convocatoria 792 del Programa Colombia Científica, que tiene como
+    objetivo explorar diversas decisiones y creencias en algunos contextos. Esta actividad será realizada
+    por 240 personas en total y tiene una duración aproximada de una hora y media repartida durante 4 días
+    (aproximadamente 20 minutos por día). Si usted decide acompañarnos, no tendrá que incurrir en
+    ningún riesgo o gasto. Por su participación podrá obtener una remuneración mínima de $3.000 y
+    máxima de $25.000, dependiendo de la suerte y de ciertas decisiones que usted tome.</p>
+
+<p>Para cada actividad a realizar se le darán instrucciones precisas. Cada participante tiene un número de
+    identificación temporal que no está relacionado con ningún nombre o número de documento de
+    identidad, lo que garantizará el anonimato de sus respuestas. Los participantes podrán decidir terminar
+    la actividad en cualquier momento, pero sólo podrán recibir su remuneración si llegan hasta el final de
+    la misma.</p>
+
+<p>Este proyecto es financiado por el Ministerio de Ciencia y Tecnología, y para poder pagarle por su
+    participación debemos contar con un certificado bancario de una cuenta Nequi. Si usted no nos ha
+    enviado el certificado, por favor, al terminar la actividad, envíenos el número de identificación
+    temporal que se le envió en la invitación a esta actividad y el certificado de su cuenta Nequi al correo
+    investigacion.esocials@correounivalle.edu.co o a nuestro Whatsapp 3167607211.  Para garantizar el
+    anonimato y la confidencialidad de sus respuestas, la certificación bancaria será tratada de manera
+    independiente a sus respuestas en este ejercicio.</p>
+
+<p>Usted tiene derecho a conocer la información relacionada con este estudio, una vez esté procesada y
+    publicada. Cualquier inquietud o información que desee obtener de dicho estudio será atendida por la
+    directora del proyecto, Lina María Restrepo Plaza en investigacion.esocials@correounivalle.edu.co, o
+    por el Comité de Ética de la Universidad del Valle en eticasalud@correounivalle.edu.co. No dude en
+    contactarse a los teléfonos 3212100 ext. 3161, 3212324, 5185677 o 5185670.</p>
+
+<p>Si está de acuerdo con la anterior información, con enviarnos la información necesaria para tramitar su
+    pago y con que se utilicen sus respuestas con fines meramente académicos, para este y otros estudios,
+    por favor acepte los términos de esta actividad para empezar.</p>
+
+<p>Muchas gracias,</p>
+
+<img class="firma" src="{% static 'imagenes/firma.png' %}">
+<p> Lina María Restrepo Plaza</p>
+<p> Investigadora principal del proyecto</p>
+
+
+<a href="{% static 'documentos\Consentimiento Informado.pdf' %}" download="Consentimiento">
+    Descargar Consentimiento
+</a>
+
+<br>
+<br>
+
+{% formfield player.consentimiento %}
+
+<button id="confirm_button" class="btn btn-primary">
+    Siguiente
+</button>
+
+{% endblock %}

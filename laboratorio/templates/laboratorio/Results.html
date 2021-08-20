@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Resultados
+{% endblock %}
+
+{% block content %}
+
+<p>Su número de errores reportados fue de: {{erroresReportados}}</p>
+
+<p>El número correcto de errores es de: {{erroresReales}}</p>
+
+{% next_button %}
+
+{% endblock %}

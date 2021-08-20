@@ -1,0 +1,150 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<style>
+    .instruccion {
+
+        max-width: 780px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .spanimg {
+        display: block;
+
+        text-align: center;
+    }
+
+    .tabla_likert {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tabla_likert th {
+        border: 1px solid rgb(199, 199, 199);
+    }
+
+    .tabla_likert td {
+        height: 50px;
+
+        border: 1px solid rgb(199, 199, 199);
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+Instrucciones de la actividad
+{% endblock %}
+
+{% block content %}
+
+<p>En esta etapa encontrará una pequeña descripción de las labores de esta actividad:</p>
+
+<ol type="1">
+    <li>En la siguiente etapa, usted encontrará dos fragmentos de texto. El texto secundario corresponde a una
+        transcripción realizada del texto principal. Su labor consistirá en leer ambos fragmentos y revisar la exactitud
+        de esta transcripción.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\1.png' %}">
+        </span>
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\2.png' %}">
+        </span>
+        <br>
+    </li>
+
+    <li>Una vez haya culminado con la lectura de ambos textos, se le pedirá que indique el número de diferencias que
+        notó entre el texto “principal” y el “secundario”.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\3.png' %}">
+        </span>
+        Cada palabra diferente o mal escrita se cuenta como una sola diferencia.
+        <br> <br>
+        Ejemplo:
+
+        <br>
+        <table class="tabla_likert">
+            <tr>
+                <td>La actividad por realizar se explica en esta sesión.</td>
+                <td>La actividad <span style="color: red;"><b>a</b></span> realizar se explica en esta <span
+                        style="color: red;"><b>sección</b></span>.</td>
+            </tr>
+        </table>
+        <br>
+
+        Este ejemplo contiene 2 errores (señalados en rojo).
+        <br><br>
+    </li>
+
+    <li>Para esta actividad, usted cuenta con un tiempo máximo correspondiente a 3 minutos por fragmento de texto. En
+        la barra superior podrá supervisar el tiempo que le quede para terminar la revisión. Una vez terminado el
+        tiempo, el cuadro se cerrará y continuará con el siguiente fragmento.
+        <br> <br>
+        <strong>Nota:</strong> El cronómetro no se puede pausar ni reiniciar.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\4.png' %}">
+        </span>
+    </li>
+
+    <li>Una vez haya culminado con la lectura y revisión de los textos, deberá dar en “Siguiente” para continuar con la
+        siguiente tarea.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\5.png' %}">
+        </span>
+
+        Una vez, haya dado en “Siguiente”, se le presentará el número de diferencias que usted acabó de reportar y el
+        número de diferencias correcto que tenía el texto secundario con respecto al principal.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\6.png' %}">
+        </span>
+
+        Luego de que haya culminado de realizar la revisión de la totalidad de los textos, se le presentará
+        la página de <b>Pago</b> donde se le indicará el salario que ha obtenido hasta el momento. <br> <br>
+        Recuerde que su pago depende de las reglas definidas en la anterior sesión.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\7.jpg' %}">
+        </span>
+
+    </li>
+
+    <li>En la siguiente etapa se le presentará una pequeña encuesta con una lista de categorías de productos, donde
+        se le preguntará por el monto que desea gastar en los diferentes artículos con su salario.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\8.png' %}">
+        </span>
+    </li>
+
+    <li>Al final de la lista encontrará un “Total” que consiste en la suma de los montos que usted ha indicado para
+        cada categoría. <br> <br>
+        <b>Nota: Recuerde que el monto del “Total” debe ser igual a su salario.</b>
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\9.png' %}">
+        </span>
+
+        Al continuar, se le presentará la <strong>Página de descanso</strong>, donde deberá esperar al siguiente día
+        para
+        reiniciar la jornada.
+        <span class="spanimg">
+            <img class="instruccion" src="{% static 'imagenes\instrucciones\10.png' %}">
+        </span>
+
+        Una vez pueda continuar con la actividad, se le presentará nuevamente la encuesta de gasto, pero ahora deberá
+        indicar el monto que gastó (efectivamente) en las categorías con su salario. La actividad se repetirá por el
+        número de días que usted haya sido contratado.
+    </li>
+
+</ol>
+
+<p><strong>NOTA IMPORTANTE: Recuerde que debe cumplir con los horarios establecidos, en caso
+        contrario será causal de <span style="color: red;">despedido</span> y no podrá continuar con la actividad.
+    </strong></p>
+
+<p><strong>RECUERDE:</strong> Cualquier inquietud se puede comunicar con los correos institucionales
+    investigacion.esocials@correounivalle.edu.co o nicolas.villanueva@correounivalle.edu.co.</p>
+
+
+{% next_button %}
+
+{% endblock %}

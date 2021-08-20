@@ -1,0 +1,324 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<style>
+  .tabla_productos {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tabla_productos img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .tabla_productos th,
+  td {
+    border: 1px solid rgb(199, 199, 199);
+  }
+
+  .aviso {
+      color: white;
+      text-align: center;
+      border-image: initial; 
+      border: 2px solid #00a0a0;
+      background-color: #00a0a0;
+      position: sticky; 
+      top: 5px;
+    }
+</style>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+  /// var input = document.getElementById('id_total');
+  // input.disable = true;
+
+  let dineroDisponible = js_vars.payoff;
+  var total = document.getElementById("id_total_post");
+
+  $('#id_productos_post_alimentos').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_snack').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_aseo').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_electronicos').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_servicios').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_transporte').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_diversion').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_ahorro').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+$('#id_productos_post_deudas').on('keypress', function(event) {
+if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;
+});
+
+  window.setInterval(
+    function () {
+      var input = document.getElementById('id_total_post');
+      input.disable = true;
+
+      let valor_alimentos = Number(document.getElementById('id_productos_post_alimentos').value);
+      let valor_snack = Number(document.getElementById('id_productos_post_snack').value);
+      let valor_aseo = Number(document.getElementById('id_productos_post_aseo').value);
+      let valor_electronicos = Number(document.getElementById('id_productos_post_electronicos').value);
+      let valor_servicios = Number(document.getElementById('id_productos_post_servicios').value);
+      let valor_transporte = Number(document.getElementById('id_productos_post_transporte').value);
+      let valor_diversion = Number(document.getElementById('id_productos_post_diversion').value);
+      let valor_ahorro = Number(document.getElementById('id_productos_post_ahorro').value);
+      let valor_deudas = Number(document.getElementById('id_productos_post_deudas').value);
+
+      console.log(isNaN(valor_alimentos))
+
+
+      var suma = 0 + valor_alimentos +
+        valor_snack +
+        valor_aseo +
+        valor_electronicos +
+        valor_servicios +
+        valor_transporte +
+        valor_diversion +
+        valor_ahorro +
+        valor_deudas;
+
+      //   document.getElementById("total").innerHTML = suma.toString();
+
+      document.getElementById("id_total_post").value = valor_alimentos +
+        valor_snack +
+        valor_aseo +
+        valor_electronicos +
+        valor_servicios +
+        valor_transporte +
+        valor_diversion +
+        valor_ahorro +
+        valor_deudas;
+
+      document.getElementById("id_total_post").disable = true;
+
+      //  document.getElementById("texto-modal").innerHTML = "La hora o fecha se ha pasado, por lo tanto no puede continuar con el experimento.";
+      //   myButton = document.getElementById('confirm_button');
+
+
+      // if (Number(total.value) > dineroDisponible) {
+      //   myButton.setAttribute('type', 'button');
+      // myButton.className = "btn btn-secondary";
+      // myButton.setAttribute('data-toggle', 'modal');
+      // } else {
+
+      //   myButton.removeAttribute('type');
+      // myButton.className = "btn btn-primary";
+      // myButton.removeAttribute('data-toggle');
+      // }
+
+      myButton = document.getElementById('confirm_button');
+
+      console.log("total", Number(total.value));
+      console.log("disponible", dineroDisponible);
+      if (Number(total.value) == dineroDisponible) {
+        console.log("se puede");
+        myButton.removeAttribute('type');
+        myButton.className = "btn btn-primary";
+        myButton.removeAttribute('data-toggle');
+      } else {
+        myButton.setAttribute('type', 'button');
+        myButton.className = "btn btn-secondary";
+        myButton.setAttribute('data-toggle', 'modal');
+
+        
+      }
+
+
+    }
+    , 250);
+</script>
+{% endblock %}
+
+{% block title %}
+Productos
+{% endblock %}
+
+
+{% block content %}
+
+<p>Para nosotros es importante identificar en qué gastó su salario. Por favor indique cuánto dinero
+  gastó en cada una de las siguientes categorías.</p>
+
+<p><strong> Nota:</strong> Recuerde que la suma de los gastos no puede ser mayor al dinero que se acaba de ganar.</p>
+
+<p class="aviso"><b> Recuerde que su salario por el anterior día de trabajo fue de: {{pagoSesion}}</b></p>
+
+<span style="color: red; margin-left: auto; margin-right: auto; text-align: center; width: 100%; display: block;">(Por
+  favor digite la cantidad sin comas ni puntos)</span>
+
+<table class="tabla_productos">
+  <tr>
+    <th>Categorías</th>
+    <th>¿Cuánto dinero gastó? </th>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\alimentos.jpg' %}">
+      <br>
+      <span>Productos alimenticios de la canasta básica familiar (como frutas, verduras,
+        carnes, pollo, huevos, arroz, azúcar, aceite, granos, café, chocolate o panela)</span>
+    </td>
+    <td>{{ form.productos_post_alimentos }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\dulces.jpg' %}">
+      <br>
+      <span>Botanas, bebidas o dulces</span>
+    </td>
+    <td>{{ form.productos_post_snack }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\aseo.jpg' %}">
+      <br>
+      <span>Producto de aseo (del hogar y personales)</span>
+    </td>
+    <td>{{ form.productos_post_aseo }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\electronicos.jpg' %}">
+      <br>
+      <span>Accesorios electrónicos</span>
+    </td>
+    <td>{{ form.productos_post_electronicos }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\servicios_publicos.jpg' %}">
+      <br>
+      <span>Pago de servicios públicos y privados (como energía, agua, alcantarillado, gas, telefonía, internet,
+        parabolica, plataformas streaming)</span>
+    </td>
+    <td>{{ form.productos_post_servicios }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\transporte.jpg' %}">
+      <br>
+      <span>Transporte (público o privado)</span>
+    </td>
+    <td>{{ form.productos_post_transporte }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\diversion.jpg' %}">
+      <br>
+      <span>Diversión u ocio</span>
+    </td>
+    <td>{{ form.productos_post_diversion }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\ahorro.jpg' %}">
+      <br>
+      <span>Ahorro</span>
+    </td>
+    <td>{{ form.productos_post_ahorro }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <img src="{% static 'imagenes\productos\deudas.jpg' %}">
+      <br>
+      <span>Pago de deudas</span>
+    </td>
+    <td>{{ form.productos_post_deudas }}</td>
+  </tr>
+
+  <tr>
+    <td>Total</td>
+    <td>{{ form.total_post }}</td>
+  </tr>
+</table>
+
+<br>
+
+<!--  -->
+<button id="confirm_button" class="btn btn-primary" data-target="#exampleModal">
+  Siguiente
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="texto-modal"> El total debe ser igual a {{pagoSesion}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
