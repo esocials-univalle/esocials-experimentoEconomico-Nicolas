@@ -1,0 +1,5 @@
+-r requirements_base.txt
+psycopg2>=2.5.1
+pytz==2019.2
+oTree==3.2.5
+Django==2.2.12
